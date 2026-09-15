@@ -247,24 +247,6 @@
         </main>
     </div>
 
-    <!-- ================= 3. FOOTER STATUS BAR ================= -->
-    <!-- ================= 3. FOOTER STATUS BAR ================= -->
-    <footer class="h-6 bg-slate-900 border-t border-slate-800 flex items-center justify-between px-3 font-mono text-[11px] text-slate-500 shrink-0">
-        <div>Proxy Python &copy; 2026</div>
-        
-        <div class="flex items-center gap-4">
-            <!-- Link Git Branch ke Repository -->
-            <a href="https://github.com/USERNAME_KAMU/proxy-python-website" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="hover:text-sky-400 flex items-center gap-1 transition">
-                <i data-lucide="git-branch" class="w-3 h-3 text-sky-400"></i>
-                <span>main*</span>
-            </a>
-            <div>HTML5 • Tailwind • Vercel Ready</div>
-        </div>
-    </footer>
-
     <!-- ================= MODAL PREVIEW CV ATS ================= -->
     <div id="cv-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-800 rounded-xl w-full max-w-4xl h-[85vh] flex flex-col shadow-2xl overflow-hidden">
@@ -309,6 +291,31 @@
 
         </div>
     </div>
+
+    <!-- ================= 3. FOOTER STATUS BAR ================= -->
+    <footer class="h-6 bg-slate-900 border-t border-slate-800 flex items-center justify-between px-3 font-mono text-[10px] sm:text-[11px] text-slate-500 shrink-0 whitespace-nowrap overflow-hidden">
+        <!-- Sisi Kiri -->
+        <div class="flex items-center gap-2 truncate">
+            <span>Proxy Python &copy; 2026</span>
+        </div>
+        
+        <!-- Sisi Kanan -->
+        <div class="flex items-center gap-2.5 sm:gap-4 shrink-0">
+            <!-- Link Git Branch -->
+            <a href="https://github.com/USERNAME_KAMU/proxy-python-website" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="hover:text-sky-400 flex items-center gap-1 transition">
+                <i data-lucide="git-branch" class="w-3 h-3 text-sky-400"></i>
+                <span>main*</span>
+            </a>
+
+            <!-- Info Tambahan (Disembunyikan di Layar HP Agar Tidak Menumpuk) -->
+            <div class="hidden sm:inline text-slate-500">
+                HTML5 • Tailwind • Vercel Ready
+            </div>
+        </div>
+    </footer>
 
     <!-- JS Files -->
     <script src="assets/js/data.js"></script>
