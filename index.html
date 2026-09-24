@@ -45,8 +45,8 @@
             background-image: 
                 radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
                 radial-gradient(circle at 0% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 40%),
-                linear-gradient(to right, rgba(30, 41, 59, 0.15) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(30, 41, 59, 0.15) 1px, transparent 1px);
+                linear-gradient(to right, rgba(30, 41, 59, 0.2) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(30, 41, 59, 0.2) 1px, transparent 1px);
             background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
         }
 
@@ -74,6 +74,22 @@
             box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.15);
         }
 
+        /* GRID PATTERN DISPLAY FOR SECTIONS (NAVY / DARK CYAN GRID) */
+        .cyber-grid-section {
+            background-color: #030712;
+            background-image: 
+                radial-gradient(circle at 50% 30%, rgba(6, 182, 212, 0.12) 0%, transparent 65%),
+                linear-gradient(to right, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+            background-size: 100% 100%, 36px 36px, 36px 36px;
+        }
+
+        /* CLEAN DARK GLASS MEMBER CARD */
+        .cyber-member-card {
+            background-color: rgba(11, 15, 25, 0.92);
+            backdrop-filter: blur(12px);
+        }
+
         .text-gradient-neon {
             background: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #a855f7 100%);
             -webkit-background-clip: text;
@@ -84,7 +100,6 @@
 </head>
 <body class="min-h-screen flex flex-col antialiased selection:bg-sky-500 selection:text-white">
 
-    <!-- ================= 1. HEADER / NAVIGATION ================= -->
     <header class="sticky top-0 z-40 w-full glass-panel border-b border-slate-800/80 px-4 lg:px-8 py-3">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
             
@@ -130,7 +145,7 @@
 
             <!-- RIGHT CTA BUTTON: GITHUB REPOSITORY -->
             <div class="flex items-center gap-3">
-                <a href="https://github.com/USERNAME_KAMU/proxy-python-website" 
+                <a href="https://github.com/Raiserss/proxy-python-website" 
                    target="_blank" 
                    rel="noopener noreferrer" 
                    class="flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-gradient-to-r from-rose-500 via-purple-500 to-emerald-400 text-white font-mono text-xs font-bold hover:opacity-90 shadow-lg shadow-purple-500/20 transition duration-300 transform hover:scale-[1.02]">
@@ -160,7 +175,6 @@
         </div>
     </header>
 
-    <!-- ================= 2. HERO SECTION ================= -->
     <section class="relative pt-10 pb-14 px-4 lg:px-8 overflow-hidden">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
@@ -259,8 +273,7 @@
         </div>
     </section>
 
-    <!-- ================= 3. TEAM COLLECTIVE SECTION ================= -->
-    <section id="team-section" class="py-14 px-4 lg:px-8 border-t border-slate-800/80 bg-slate-950/40">
+    <section id="team-section" class="py-14 px-4 lg:px-8 border-t border-slate-800/80 cyber-grid-section relative">
         <div class="max-w-7xl mx-auto space-y-8">
             
             <!-- SECTION HEADER & CATEGORY FILTERS -->
@@ -274,7 +287,7 @@
                         Meet the Proxy Python Collective
                     </h2>
                     <p class="text-xs sm:text-sm text-slate-400 max-w-xl font-sans">
-                        Daftar lengkap anggota kelompok Proxy Python dengan foto profil utama yang diperbesar, biodata ringkas, jejaring sosial, dan akses langsung ATS CV.
+                        Daftar lengkap anggota kelompok Proxy Python dengan foto profil utama, biodata ringkas, jejaring sosial, dan akses langsung ATS CV.
                     </p>
                 </div>
 
@@ -287,7 +300,7 @@
                 </div>
             </div>
 
-            <!-- TEAM CARDS GRID CONTAINER (LARGE PROFILE PICTURES) -->
+            <!-- TEAM CARDS GRID CONTAINER (FEATURING NAVY GRID BACKGROUND PATTERN) -->
             <div id="team-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Dynamically populated by JS -->
             </div>
@@ -295,8 +308,7 @@
         </div>
     </section>
 
-    <!-- ================= 4. COMPACT ACTIVITY DOCUMENTATION SHOWCASE ================= -->
-    <section id="gallery-section" class="py-14 px-4 lg:px-8 border-t border-slate-800/80">
+    <section id="gallery-section" class="py-14 px-4 lg:px-8 border-t border-slate-800/80 cyber-grid-section relative">
         <div class="max-w-7xl mx-auto space-y-6">
             
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-800 pb-4">
@@ -369,7 +381,6 @@
         </div>
     </section>
 
-    <!-- ================= 5. FOOTER ================= -->
     <footer class="bg-slate-950 border-t border-slate-800/80 pt-10 pb-8 px-4 lg:px-8 font-mono text-xs">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-10 border-b border-slate-800/80">
             
@@ -419,7 +430,7 @@
                 © 2026 Proxy Python Collective. All rights reserved.
             </div>
             <div class="flex items-center gap-4">
-                <a href="https://github.com/USERNAME_KAMU/proxy-python-website" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 flex items-center gap-1 transition">
+                <a href="https://github.com/Raiserss/proxy-python-website" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 flex items-center gap-1 transition">
                     <i data-lucide="git-branch" class="w-3.5 h-3.5 text-sky-400"></i>
                     <span>main*</span>
                 </a>
@@ -429,7 +440,7 @@
         </div>
     </footer>
 
-    <!-- ================= 6. MODAL: ABOUT US ================= -->
+    <!-- ABOUT US MODAL -->
     <div id="about-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
         <div class="cyber-card rounded-2xl w-full max-w-3xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden border border-slate-800">
             <div class="p-4 bg-slate-950 border-b border-slate-800 flex justify-between items-center font-mono text-xs">
@@ -454,7 +465,7 @@
         </div>
     </div>
 
-    <!-- ================= 7. MODAL: CONTACT ================= -->
+    <!-- CONTACT MODAL -->
     <div id="contact-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
         <div class="cyber-card rounded-2xl w-full max-w-md shadow-2xl overflow-hidden border border-slate-800">
             <div class="p-4 bg-slate-950 border-b border-slate-800 flex justify-between items-center font-mono text-xs">
@@ -485,7 +496,7 @@
         </div>
     </div>
 
-    <!-- ================= 8. MODAL: ATS CV PREVIEW ================= -->
+    <!-- ATS CV PREVIEW MODAL -->
     <div id="cv-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
         <div class="cyber-card rounded-2xl w-full max-w-4xl h-[85vh] flex flex-col shadow-2xl overflow-hidden border border-slate-800">
             <div class="p-3 bg-slate-950 border-b border-slate-800 flex justify-between items-center font-mono text-xs">
@@ -502,7 +513,7 @@
         </div>
     </div>
 
-    <!-- ================= 9. MODAL: LIGHTBOX IMAGE ================= -->
+    <!-- IMAGE LIGHTBOX MODAL -->
     <div id="image-modal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden flex items-center justify-center p-4">
         <div class="cyber-card rounded-2xl max-w-3xl w-full flex flex-col overflow-hidden shadow-2xl border border-slate-800">
             <div class="p-3 bg-slate-950 border-b border-slate-800 flex justify-between items-center font-mono text-xs">

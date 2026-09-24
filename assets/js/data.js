@@ -1,4 +1,5 @@
-const membersData = [
+// DATA SET ANGGOTA (10 ANGGOTA KELOMPOK)
+        const membersData = [
           {
             nama: "Nama Anggota 1",
             tanggal_lahir: "15 Januari 2004",
