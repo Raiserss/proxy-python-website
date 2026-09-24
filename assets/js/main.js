@@ -1,53 +1,72 @@
-function renderMembers() {
-          const container = document.getElementById('members-container');
+let currentGalleryIndex = 0;
+
+        // RENDER KARTU ANGGOTA DENGAN FOTO PROFIL BESAR
+        function renderMembers(filterCity = 'all') {
+          const container = document.getElementById('team-cards-container');
           if (!container) return;
 
-          container.innerHTML = membersData.map((member) => `
-            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 font-mono text-xs space-y-4">
+          const filteredData = filterCity === 'all' 
+            ? membersData 
+            : membersData.filter(m => m.asal_kota.toLowerCase() === filterCity.toLowerCase());
+
+          container.innerHTML = filteredData.map((member) => `
+            <div class="cyber-card rounded-2xl p-6 font-mono text-xs space-y-5 flex flex-col justify-between">
               
-              <div class="flex items-center gap-4">
-                <div class="w-14 h-14 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center overflow-hidden shrink-0">
-                  <img src="${member.foto}" alt="${member.nama}" 
-                       onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(member.nama)}&background=1e293b&color=94a3b8';" 
-                       class="w-full h-full object-cover">
+              <div class="space-y-5">
+                <!-- FOTO PROFIL BESAR DENGAN BORDER GLOW & BADGE KOTA -->
+                <div class="flex flex-col items-center sm:flex-row sm:items-start gap-4">
+                  <div class="w-28 h-28 rounded-2xl bg-slate-900 border-2 border-sky-400/40 p-1 flex items-center justify-center overflow-hidden shrink-0 shadow-lg shadow-sky-500/10 group">
+                    <img src="${member.foto}" alt="${member.nama}" 
+                         onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(member.nama)}&background=1e293b&color=38bdf8';" 
+                         class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition duration-300">
+                  </div>
+                  <div class="space-y-2 text-center sm:text-left">
+                    <h3 class="text-white text-lg font-bold font-sans tracking-tight leading-snug">${member.nama}</h3>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-[10px] font-bold">
+                      <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
+                      📍 ${member.asal_kota} Node
+                    </span>
+                  </div>
                 </div>
-                <div>
-                  <h3 class="text-white text-sm font-bold font-sans">${member.nama}</h3>
-                  <p class="text-slate-400">${member.asal_kota}</p>
+
+                <!-- KODE BIODATA RINGKAS -->
+                <div class="bg-slate-950/90 p-4 rounded-xl border border-slate-800 space-y-1.5 text-slate-300">
+                  <p><span class="text-sky-400">nama</span> = <span class="text-amber-300">"${member.nama}"</span></p>
+                  <p><span class="text-sky-400">tanggal_lahir</span> = <span class="text-amber-300">"${member.tanggal_lahir}"</span></p>
+                  <p><span class="text-sky-400">asal_kota</span> = <span class="text-amber-300">"${member.asal_kota}"</span></p>
                 </div>
               </div>
 
-              <div class="bg-slate-950 p-3 rounded-lg border border-slate-800/80 space-y-1 text-slate-300">
-                <p><span class="text-sky-400">nama</span> = <span class="text-amber-300">"${member.nama}"</span></p>
-                <p><span class="text-sky-400">tanggal_lahir</span> = <span class="text-amber-300">"${member.tanggal_lahir}"</span></p>
-                <p><span class="text-sky-400">asal_kota</span> = <span class="text-amber-300">"${member.asal_kota}"</span></p>
-              </div>
-
-              <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-800">
+              <!-- MEDIA SOSIAL & AKSES CV ATS -->
+              <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-800/80">
+                
+                <!-- LINK SOSMED -->
                 <div class="flex items-center gap-3 text-slate-400">
-                  <a href="${member.instagram}" target="_blank" rel="noopener noreferrer" class="hover:text-pink-400 flex items-center gap-1.5 transition">
-                    <svg class="w-3.5 h-3.5 fill-current text-pink-400" viewBox="0 0 24 24">
+                  <a href="${member.instagram}" target="_blank" rel="noopener noreferrer" class="hover:text-pink-400 flex items-center gap-1.5 transition" title="Instagram">
+                    <svg class="w-4 h-4 fill-current text-pink-400" viewBox="0 0 24 24">
                       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                     </svg>
                     <span>Instagram</span>
                   </a>
 
-                  <a href="${member.linkedin}" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 flex items-center gap-1.5 transition">
-                    <svg class="w-3.5 h-3.5 fill-current text-sky-400" viewBox="0 0 24 24">
+                  <a href="${member.linkedin}" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 flex items-center gap-1.5 transition" title="LinkedIn">
+                    <svg class="w-4 h-4 fill-current text-sky-400" viewBox="0 0 24 24">
                       <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                     </svg>
                     <span>LinkedIn</span>
                   </a>
                 </div>
                 
+                <!-- TOMBOL CV ATS -->
                 <div class="flex items-center gap-2 shrink-0">
-                  <button onclick="openCvModal('${member.cv}', '${member.nama}')" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-sky-400 border border-slate-700 font-bold rounded text-[11px] flex items-center gap-1 transition whitespace-nowrap cursor-pointer">
+                  <button onclick="openCvModal('${member.cv}', '${member.nama}')" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-sky-400 border border-slate-700 font-bold rounded-lg text-[11px] flex items-center gap-1.5 transition whitespace-nowrap">
                     <i data-lucide="eye" class="w-3.5 h-3.5"></i> Lihat CV
                   </button>
-                  <a href="${member.cv}" download class="px-2.5 py-1.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold rounded text-[11px] flex items-center gap-1 transition whitespace-nowrap">
+                  <a href="${member.cv}" download class="px-3 py-1.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold rounded-lg text-[11px] flex items-center gap-1.5 transition whitespace-nowrap">
                     <i data-lucide="download" class="w-3.5 h-3.5"></i> Unduh
                   </a>
                 </div>
+
               </div>
 
             </div>
@@ -56,6 +75,79 @@ function renderMembers() {
           if (window.lucide) lucide.createIcons();
         }
 
+        // FILTER ANGGOTA KELOMPOK
+        function filterTeam(category) {
+          document.querySelectorAll('.team-filter-btn').forEach(btn => {
+            btn.classList.remove('bg-sky-500', 'text-slate-950', 'font-bold');
+            btn.classList.add('text-slate-400');
+          });
+
+          const activeBtn = document.getElementById('filter-' + category);
+          if (activeBtn) {
+            activeBtn.classList.remove('text-slate-400');
+            activeBtn.classList.add('bg-sky-500', 'text-slate-950', 'font-bold');
+          }
+
+          renderMembers(category);
+        }
+
+        // RENDER CAROUSEL DOKUMENTASI COMPACT
+        function updateGalleryShowcase() {
+          const item = galleryData[currentGalleryIndex];
+          if (!item) return;
+
+          const bgImg = document.getElementById('carousel-bg-image');
+          const title = document.getElementById('carousel-title');
+          const desc = document.getElementById('carousel-desc');
+          const counter = document.getElementById('gallery-counter');
+          const zoomBtn = document.getElementById('carousel-zoom-btn');
+          const thumbsBar = document.getElementById('carousel-thumbnails-bar');
+
+          if (bgImg) {
+            bgImg.src = item.foto;
+            bgImg.onerror = function() {
+              this.onerror = null;
+              this.src = 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80';
+            };
+          }
+
+          if (title) title.textContent = item.judul;
+          if (desc) desc.textContent = item.deskripsi;
+          if (counter) counter.textContent = `Slide ${currentGalleryIndex + 1} / ${galleryData.length}`;
+
+          if (zoomBtn) {
+            zoomBtn.onclick = () => openImageModal(item.foto, item.judul, item.deskripsi);
+          }
+
+          if (thumbsBar) {
+            thumbsBar.innerHTML = galleryData.map((g, idx) => `
+              <button onclick="setGallerySlide(${idx})" 
+                      aria-label="View slide ${idx + 1}"
+                      class="w-12 h-9 rounded-lg overflow-hidden border-2 transition ${idx === currentGalleryIndex ? 'border-amber-400 scale-105' : 'border-slate-800 opacity-60 hover:opacity-100'}">
+                <img src="${g.foto}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80';" class="w-full h-full object-cover">
+              </button>
+            `).join('');
+          }
+
+          if (window.lucide) lucide.createIcons();
+        }
+
+        function nextGallerySlide() {
+          currentGalleryIndex = (currentGalleryIndex + 1) % galleryData.length;
+          updateGalleryShowcase();
+        }
+
+        function prevGallerySlide() {
+          currentGalleryIndex = (currentGalleryIndex - 1 + galleryData.length) % galleryData.length;
+          updateGalleryShowcase();
+        }
+
+        function setGallerySlide(idx) {
+          currentGalleryIndex = idx;
+          updateGalleryShowcase();
+        }
+
+        // MODAL PREVIEW ATS CV
         function openCvModal(pdfUrl, nama) {
           const modal = document.getElementById('cv-modal');
           const iframe = document.getElementById('cv-iframe');
@@ -63,7 +155,7 @@ function renderMembers() {
 
           if (modal && iframe) {
             iframe.src = pdfUrl;
-            title.innerHTML = `<i data-lucide="file-text" class="w-4 h-4"></i> Pratinjau CV ATS - ${nama}`;
+            title.innerHTML = `<i data-lucide="file-text" class="w-4 h-4"></i> ATS CV Preview — ${nama}`;
             modal.classList.remove('hidden');
             if (window.lucide) lucide.createIcons();
           }
@@ -72,42 +164,13 @@ function renderMembers() {
         function closeCvModal() {
           const modal = document.getElementById('cv-modal');
           const iframe = document.getElementById('cv-iframe');
-
           if (modal && iframe) {
             iframe.src = '';
             modal.classList.add('hidden');
           }
         }
 
-        function renderGallery() {
-          const container = document.getElementById('gallery-container');
-          if (!container) return;
-
-          container.innerHTML = galleryData.map((item) => `
-            <div onclick="openImageModal('${item.foto}', '${item.judul}', '${item.deskripsi}')" 
-                 class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden cursor-pointer group hover:border-amber-400/50 transition duration-300">
-              
-              <div class="h-44 overflow-hidden bg-slate-950 relative">
-                <img src="${item.foto}" alt="${item.judul}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                
-                <div class="absolute inset-0 bg-slate-950/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-amber-400 font-mono text-xs gap-1">
-                  <i data-lucide="maximize-2" class="w-4 h-4"></i> Klik untuk Membesar
-                </div>
-              </div>
-
-              <div class="p-3 font-mono text-xs space-y-1">
-                <p class="text-amber-400 font-semibold flex items-center gap-1">
-                  <span>&gt;</span> ${item.judul}
-                </p>
-                <p class="text-slate-400 font-sans text-[11px] line-clamp-2">${item.deskripsi}</p>
-              </div>
-
-            </div>
-          `).join('');
-
-          if (window.lucide) lucide.createIcons();
-        }
-
+        // MODAL LIGHTBOX FOTO DOKUMENTASI (WITH AUTO FALLBACK)
         function openImageModal(fotoUrl, judul, deskripsi) {
           const modal = document.getElementById('image-modal');
           const img = document.getElementById('image-modal-src');
@@ -116,6 +179,10 @@ function renderMembers() {
 
           if (modal && img) {
             img.src = fotoUrl;
+            img.onerror = function() {
+              this.onerror = null;
+              this.src = 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80';
+            };
             title.innerHTML = `<i data-lucide="image" class="w-4 h-4"></i> ${judul}`;
             desc.textContent = deskripsi;
             modal.classList.remove('hidden');
@@ -126,82 +193,37 @@ function renderMembers() {
         function closeImageModal() {
           const modal = document.getElementById('image-modal');
           const img = document.getElementById('image-modal-src');
-
           if (modal && img) {
             img.src = '';
             modal.classList.add('hidden');
           }
         }
 
-        window.switchTab = function(tabName) {
-          document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+        // HELPER MODALS & NAV TOGGLES
+        function openAboutModal() { document.getElementById('about-modal').classList.remove('hidden'); }
+        function closeAboutModal() { document.getElementById('about-modal').classList.add('hidden'); }
 
-          document.querySelectorAll('.tab-header').forEach(el => {
-            el.classList.remove('border-t-sky-400', 'bg-slate-950', 'text-sky-400');
-            el.classList.add('border-t-transparent', 'bg-slate-900/50', 'text-slate-400');
-          });
+        function openContactModal() { document.getElementById('contact-modal').classList.remove('hidden'); }
+        function closeContactModal() { document.getElementById('contact-modal').classList.add('hidden'); }
 
-          const targetContent = document.getElementById('content-' + tabName);
-          const targetHeader = document.getElementById('tab-' + tabName);
+        function toggleMobileMenu() {
+          const menu = document.getElementById('mobile-menu');
+          if (menu) menu.classList.toggle('hidden');
+        }
 
-          if (targetContent) targetContent.classList.remove('hidden');
-          if (targetHeader) {
-            targetHeader.classList.remove('border-t-transparent', 'bg-slate-900/50', 'text-slate-400');
-            targetHeader.classList.add('border-t-sky-400', 'bg-slate-950', 'text-sky-400');
-          }
+        function handleContactSubmit(e) {
+          e.preventDefault();
+          alert('Transmission sent successfully to Proxy Python Node!');
+          closeContactModal();
+        }
 
-          const breadcrumb = document.getElementById('breadcrumb-active');
-          if (breadcrumb) {
-            const breadcrumbMap = {
-              'overview': '<i data-lucide="file-text" class="w-3 h-3 text-emerald-400"></i> overview.md',
-              'members': '<i data-lucide="users" class="w-3 h-3 text-amber-400"></i> members.json',
-              'gallery': '<i data-lucide="image" class="w-3 h-3 text-sky-400"></i> gallery.md'
-            };
-            breadcrumb.innerHTML = breadcrumbMap[tabName] || tabName;
-          }
-
-          if (window.lucide) lucide.createIcons();
-
-          // Sembunyikan sidebar mobile jika sedang terbuka
-          const sidebar = document.getElementById('sidebar');
-          const overlay = document.getElementById('sidebar-overlay');
-          if (sidebar && overlay && window.innerWidth < 768) {
-            sidebar.classList.add('-translate-x-full');
-            overlay.classList.add('hidden');
-          }
-        };
-
+        // INITIALIZE APP ON DOM LOAD
         document.addEventListener('DOMContentLoaded', () => {
-          renderMembers();
-          renderGallery();
+          renderMembers('all');
+          updateGalleryShowcase();
 
-          const sidebar = document.getElementById('sidebar');
-          const overlay = document.getElementById('sidebar-overlay');
-          const toggleBtn = document.getElementById('toggle-sidebar');
-          const closeBtn = document.getElementById('close-sidebar');
-
-          if (toggleBtn) {
-            toggleBtn.addEventListener('click', () => {
-              if (window.innerWidth >= 768) {
-                sidebar.classList.toggle('md:hidden');
-              } else {
-                sidebar.classList.toggle('-translate-x-full');
-                overlay.classList.toggle('hidden');
-              }
-            });
-          }
-
-          if (closeBtn) {
-            closeBtn.addEventListener('click', () => {
-              sidebar.classList.add('-translate-x-full');
-              overlay.classList.add('hidden');
-            });
-          }
-
-          if (overlay) {
-            overlay.addEventListener('click', () => {
-              sidebar.classList.add('-translate-x-full');
-              overlay.classList.add('hidden');
-            });
+          const mobileBtn = document.getElementById('mobile-menu-btn');
+          if (mobileBtn) {
+            mobileBtn.addEventListener('click', toggleMobileMenu);
           }
         });
