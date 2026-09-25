@@ -182,14 +182,23 @@ function setGallerySlide(idx) {
   updateGalleryShowcase();
 }
 
-// MODAL PREVIEW ATS CV
+// MODAL PREVIEW ATS CV (OPTIMIZED FOR MOBILE & DESKTOP)
 function openCvModal(pdfUrl, nama) {
   const modal = document.getElementById('cv-modal');
   const iframe = document.getElementById('cv-iframe');
   const title = document.getElementById('cv-modal-title');
 
   if (modal && iframe) {
-    iframe.src = pdfUrl;
+    const fullPdfUrl = new URL(pdfUrl, window.location.href).href;
+
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    if (isMobile && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
+      iframe.src = `https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(fullPdfUrl)}`;
+    } else {
+      iframe.src = pdfUrl;
+    }
+
     if (title) title.innerHTML = `<i data-lucide="file-text" class="w-4 h-4"></i> ATS CV Preview — ${nama}`;
     modal.classList.remove('hidden');
     if (window.lucide) lucide.createIcons();
