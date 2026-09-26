@@ -102,7 +102,7 @@
           },
           {
             nama: "Rafa Nehru Khairitami",
-            nim: "1 Januari 2006",
+            nim: "M0403251110",
             tanggal_lahir: "1 Januari 2006",
             asal_kota: "Jakarta",
             instagram: "https://instagram.com/rafanehrk",
@@ -115,58 +115,58 @@
         // DATA SET DOKUMENTASI KEGIATAN
         const galleryData = [
           {
-            judul: "Sesi Brainstorming Konsep",
-            deskripsi: "Diskusi awal penentuan arsitektur web dan penentuan tema VS Code IDE & Cybernetic Collective.",
+            judul: "Meet Your Proxy",
+            deskripsi: "Pertemuan pertama anggota proxy bersama PJK.",
             foto: "assets/images/gallery/photo1.jpeg"
           },
           {
-            judul: "Coding & Integrasi Git",
-            deskripsi: "Proses penyusunan kode HTML, Tailwind CSS, dan penggabungan branch GitHub secara kolaboratif.",
+            judul: "Pekan Ilkomerz Day 1",
+            deskripsi: "Foto bersama proxy pada Pekan Ilkomerz hari pertama.",
             foto: "assets/images/gallery/photo2.jpeg"
           },
           {
-            judul: "Uji Coba Deployment Vercel",
-            deskripsi: "Memastikan website ter-deploy secara otomatis, responsif, dan stabil di semua perangkat.",
+            judul: "Prepare The Showtime-Force 1",
+            deskripsi: "Foto bersama proxy pada latihan Komtroopers pertama.",
             foto: "assets/images/gallery/photo3.jpeg"
           },
           {
-            judul: "Pengujian Antarmuka Web",
-            deskripsi: "Peninjauan performa render antarmuka dan optimasi waktu muat aset gambar.",
+            judul: "Forum Day",
+            deskripsi: "Foto bersama proxy pada forum angkatan.",
             foto: "assets/images/gallery/photo4.jpeg"
           },
           {
-            judul: "Review Algoritma Python",
-            deskripsi: "Diskusi implementasi logika pemrosesan data menggunakan library Python terkini.",
+            judul: "Pekan Ilkomerz Day 2",
+            deskripsi: "Foto bersama proxy pada Pekan Ilkomerz hari kedua.",
             foto: "assets/images/gallery/photo5.jpeg"
           },
           {
-            judul: "Final Audit System",
-            deskripsi: "Pemeriksaan akhir kepatuhan dokumen ATS CV dan integrasi tautan repositori GitHub.",
+            judul: "Prepare The Showtime-Force 2",
+            deskripsi: "Foto bersama proxy pada latihan Komtroopers kedua.",
             foto: "assets/images/gallery/photo6.jpeg"
           },
           {
-            judul: "Review Algoritma Python",
-            deskripsi: "Diskusi implementasi logika pemrosesan data menggunakan library Python terkini.",
+            judul: "Pekan Ilkomerz Day 3",
+            deskripsi: "Foto bersama proxy pada Pekan Ilkomerz hari ketiga.",
             foto: "assets/images/gallery/photo7.jpeg"
           },
           {
-            judul: "Review Algoritma Python",
-            deskripsi: "Diskusi implementasi logika pemrosesan data menggunakan library Python terkini.",
+            judul: "Prepare The Showtime-Force 3",
+            deskripsi: "Foto bersama proxy pada latihan Komtroopers kedua.",
             foto: "assets/images/gallery/photo8.jpeg"
           },
           {
-            judul: "Review Algoritma Python",
-            deskripsi: "Diskusi implementasi logika pemrosesan data menggunakan library Python terkini.",
+            judul: "Pekan Ilkomerz Day 4",
+            deskripsi: "Foto bersama proxy pada Pekan Ilkomerz hari keempat.",
             foto: "assets/images/gallery/photo9.jpeg"
           },
           {
-            judul: "Review Algoritma Python",
-            deskripsi: "Diskusi implementasi logika pemrosesan data menggunakan library Python terkini.",
+            judul: "Spectra Fusion - Opening Day",
+            deskripsi: "Foto bersama proxy pada opening Spectra.",
             foto: "assets/images/gallery/photo10.jpeg"
           },
           {
-            judul: "Review Algoritma Python",
-            deskripsi: "Diskusi implementasi logika pemrosesan data menggunakan library Python terkini.",
+            judul: "Pekan Ilkomerz Day 5",
+            deskripsi: "Foto bersama proxy pada Pekan Ilkomerz hari kelima.",
             foto: "assets/images/gallery/photo11.jpeg"
           },
         ];
