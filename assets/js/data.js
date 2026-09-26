@@ -8,7 +8,7 @@
             instagram: "https://instagram.com/mfarispasha_?stkn=aWRmczF4eW5rMHhr",
             linkedin: "https://linkedin.com/in/farispasha?utm_source=share_via&utm_content=profile&utm_medium=member_android",
             foto: "assets/images/members/Muhammad Faris Pasha.png",
-            cv: "assets/docs/Muhammad Faris Pasha Piguna-cv.pdf"
+            cv: "assets/docs/Muhammad Faris Pasha-cv.pdf"
           },
           {
             nama: "Rafif Qaiser Shafiq",
