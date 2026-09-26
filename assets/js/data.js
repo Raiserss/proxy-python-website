@@ -3,12 +3,12 @@
           {
             nama: "Muhammad Faris Pasha Piguna",
             nim: "M0403251097",
-            tanggal_lahir: "15 Januari 2004",
-            asal_kota: "Jakarta",
-            instagram: "https://instagram.com/username",
-            linkedin: "https://linkedin.com/in/username",
-            foto: "assets/images/members/Muhammad Faris Pasha Piguna.jpeg",
-            cv: "assets/docs/Muhammad Faris Pasha Piguna.pdf"
+            tanggal_lahir: "8 Juli 2007",
+            asal_kota: "Bandung",
+            instagram: "https://instagram.com/mfarispasha_?stkn=aWRmczF4eW5rMHhr",
+            linkedin: "https://linkedin.com/in/farispasha?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+            foto: "assets/images/members/Muhammad Faris Pasha.png",
+            cv: "assets/docs/Muhammad Faris Pasha Piguna-cv.pdf"
           },
           {
             nama: "Rafif Qaiser Shafiq",
@@ -18,17 +18,17 @@
             instagram: "https://instagram.com/rafifqs",
             linkedin: "https://linkedin.com/in/rafif-qaiser-shafiq",
             foto: "assets/images/members/Rafif Qaiser Shafiq.png",
-            cv: "assets/docs/Rafif Qaiser Shafiq-resume.pdf"
+            cv: "assets/docs/Rafif Qaiser Shafiq-cv.pdf"
           },
           {
             nama: "Naila Anandini Yusuf",
             nim: "M0403251101",
             tanggal_lahir: "1 September 2007",
             asal_kota: "Bogor",
-            instagram: "https://instagram.com/nailanndin",
+            instagram: "https://instagram.com/nailanndini",
             linkedin: "https://linkedin.com/in/nailaanandini",
             foto: "assets/images/members/Naila Anandini Yusuf.jpg",
-            cv: "assets/docs/Naila Anandini Yusuf-resume.pdf"
+            cv: "assets/docs/Naila Anandini Yusuf-cv.pdf"
           },
           {
             nama: "William Jonathan Pasongly",
@@ -38,7 +38,7 @@
             instagram: "https://instagram.com/username",
             linkedin: "https://linkedin.com/in/username",
             foto: "assets/images/members/William Jonathan Pasongly.jpg",
-            cv: "assets/docsWilliam Jonathan Pasongly.pdf"
+            cv: "assets/docsWilliam Jonathan Pasongly-cv.pdf"
           },
           {
             nama: "Muhammad Hafiizh Abimanyu",
@@ -48,27 +48,27 @@
             instagram: "https://instagram.com/username",
             linkedin: "https://linkedin.com/in/username",
             foto: "assets/images/members/Muhammad Hafiizh Abimanyu.jpg",
-            cv: "assets/docs/Muhammad Hafiizh Abimanyu.pdf"
+            cv: "assets/docs/Muhammad Hafiizh Abimanyu-cv.pdf"
           },
           {
             nama: "Reyfando Aulia",
             nim: "M0403251105",
-            tanggal_lahir: "05 Juli 2004",
+            tanggal_lahir: "14 Januari 2006",
             asal_kota: "Jakarta",
-            instagram: "https://instagram.com/username",
-            linkedin: "https://linkedin.com/in/username",
-            foto: "assets/images/members/Reyfando Aulia.jpg",
-            cv: "assets/docs/Reyfando Aulia.pdf"
+            instagram: "https://instagram.com/ryfnd66",
+            linkedin: "https://linkedin.com/in/reyfando-aulia-a91718327",
+            foto: "assets/images/members/Reyfando Aulia.png",
+            cv: "assets/docs/Reyfando Aulia-cv.pdf"
           },
           {
             nama: "Sangaji Wisnu Pradipta",
             nim: "M0403251106",
-            tanggal_lahir: "30 Agustus 2004",
-            asal_kota: "Bandung",
+            tanggal_lahir: "17 Juli 2006",
+            asal_kota: "Kutoarjo",
             instagram: "https://instagram.com/username",
             linkedin: "https://linkedin.com/in/username",
-            foto: "assets/images/members/Sangaji Wisnu Pradipta.jpg",
-            cv: "assets/docs/Sangaji Wisnu Pradipta.pdf"
+            foto: "assets/images/members/Sangaji Wisnu Pradipta.png",
+            cv: "assets/docs/Sangaji Wisnu Pradipta-cv.pdf"
           },
           {
             nama: "Rizki Ayu Diah Nur Hasanah",
@@ -77,8 +77,8 @@
             asal_kota: "Surabaya",
             instagram: "https://instagram.com/username",
             linkedin: "https://linkedin.com/in/username",
-            foto: "assets/images/members/Rizki Ayu Diah Nur Hasanah.jpg",
-            cv: "assets/docs/Rizki Ayu Diah Nur Hasanah.pdf"
+            foto: "assets/images/members/Rizki Ayu Diah Nur Hasanah.png",
+            cv: "assets/docs/Rizki Ayu Diah Nur Hasanah-cv.pdf"
           },
           {
             nama: "Andri Fariz",
@@ -88,17 +88,17 @@
             instagram: "https://instagram.com/username",
             linkedin: "https://linkedin.com/in/username",
             foto: "assets/images/members/Andri Fariz.jpg",
-            cv: "assets/docs/Andri Fariz.pdf"
+            cv: "assets/docs/Andri Fariz-cv.pdf"
           },
           {
             nama: "Hafiz Hengkara",
             nim: "M0403251109",
-            tanggal_lahir: "02 Desember 2003",
-            asal_kota: "Bogor",
-            instagram: "https://instagram.com/username",
-            linkedin: "https://linkedin.com/in/username",
-            foto: "assets/images/members/Hafiz Hengkara.jpg",
-            cv: "assets/docs/Hafiz Hengkara.pdf"
+            tanggal_lahir: "25 Februari 2007",
+            asal_kota: "Depok",
+            instagram: "https://instagram.com/haraaa_haraaa?stkn=MXBvOHoweHk2a3U4cQ==",
+            linkedin: "https://linkedin.com/in/hafiz-hengkara-b5529441a/",
+            foto: "assets/images/members/Hafiz Hengkara.png",
+            cv: "assets/docs/Hafiz Hengkara-cv.pdf"
           },
           {
             nama: "Rafa Nehru Khairitami",
@@ -108,7 +108,7 @@
             instagram: "https://instagram.com/rafanehrk",
             linkedin: "https://linkedin.com/in/rafa-nehru-khairitami-01b741371",
             foto: "assets/images/members/Rafa Nehru Khairitam.jpg",
-            cv: "assets/docs/Rafa Nehru Khairitam.pdf"
+            cv: "assets/docs/Rafa Nehru Khairitam-cv.pdf"
           }
         ];
 
