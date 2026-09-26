@@ -3,7 +3,7 @@
           {
             nama: "Muhammad Faris Pasha Piguna",
             nim: "M0403251097",
-            tanggal_lahir: "8 Juli 2007",
+            tanggal_lahir: "08 Juli 2007",
             asal_kota: "Bandung",
             instagram: "https://instagram.com/mfarispasha_?stkn=aWRmczF4eW5rMHhr",
             linkedin: "https://linkedin.com/in/farispasha?utm_source=share_via&utm_content=profile&utm_medium=member_android",
@@ -23,7 +23,7 @@
           {
             nama: "Naila Anandini Yusuf",
             nim: "M0403251101",
-            tanggal_lahir: "1 September 2007",
+            tanggal_lahir: "01 September 2007",
             asal_kota: "Bogor",
             instagram: "https://instagram.com/nailanndini",
             linkedin: "https://linkedin.com/in/nailaanandini",
@@ -33,10 +33,10 @@
           {
             nama: "William Jonathan Pasongly",
             nim: "M0403251102",
-            tanggal_lahir: "12 Maret 2004",
-            asal_kota: "Jakarta",
-            instagram: "https://instagram.com/username",
-            linkedin: "https://linkedin.com/in/username",
+            tanggal_lahir: "05 Januari 2007",
+            asal_kota: "Depok",
+            instagram: "https://instagram.com/at_willi",
+            linkedin: "https://linkedin.com/in/william-jonathan-pasongly-6152a841a",
             foto: "assets/images/members/William Jonathan Pasongly.jpg",
             cv: "assets/docsWilliam Jonathan Pasongly-cv.pdf"
           },
@@ -73,10 +73,10 @@
           {
             nama: "Rizki Ayu Diah Nur Hasanah",
             nim: "M0403251107",
-            tanggal_lahir: "14 April 2004",
-            asal_kota: "Surabaya",
-            instagram: "https://instagram.com/username",
-            linkedin: "https://linkedin.com/in/username",
+            tanggal_lahir: "12 Desember 2006",
+            asal_kota: "Bekasi",
+            instagram: "https://instagram.com/rizkiayudiahnh",
+            linkedin: "https://linkedin.com/in/rizki-ayu-diah-nur-hasanah-332b8937b",
             foto: "assets/images/members/Rizki Ayu Diah Nur Hasanah.png",
             cv: "assets/docs/Rizki Ayu Diah Nur Hasanah-cv.pdf"
           },
@@ -103,7 +103,7 @@
           {
             nama: "Rafa Nehru Khairitami",
             nim: "M0403251110",
-            tanggal_lahir: "1 Januari 2006",
+            tanggal_lahir: "01 Januari 2006",
             asal_kota: "Jakarta",
             instagram: "https://instagram.com/rafanehrk",
             linkedin: "https://linkedin.com/in/rafa-nehru-khairitami-01b741371",

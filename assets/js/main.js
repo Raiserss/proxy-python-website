@@ -7,7 +7,7 @@ function renderFilterButtons() {
   const cities = [...new Set(membersData.map(m => m.asal_kota))];
 
   let html = `
-    <button id="filter-all" onclick="filterTeam('all')" class="team-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-sky-500 text-slate-950 transition">
+    <button id="filter-all" onclick="filterTeam('all')" class="team-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-sky-500 text-slate-950 hover:text-white transition">
       All ${membersData.length} Leads
     </button>
   `;
@@ -111,7 +111,7 @@ function renderMembers(filterCity = 'all') {
 function filterTeam(category) {
   document.querySelectorAll('.team-filter-btn').forEach(btn => {
     btn.classList.remove('bg-sky-500', 'text-slate-950', 'font-bold');
-    btn.classList.add('text-slate-400');
+    btn.classList.add('text-slate-400', 'hover:text-white');
   });
 
   const activeBtn = document.getElementById('filter-' + category);
