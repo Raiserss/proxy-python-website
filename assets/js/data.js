@@ -37,14 +37,14 @@
             asal_kota: "Depok",
             instagram: "https://instagram.com/at_willi",
             linkedin: "https://linkedin.com/in/william-jonathan-pasongly-6152a841a",
-            foto: "assets/images/members/William Jonathan Pasongly.jpg",
-            cv: "assets/docsWilliam Jonathan Pasongly-cv.pdf"
+            foto: "assets/images/members/William Jonathan Pasongly.png",
+            cv: "assets/docs/William Jonathan Pasongly-cv.pdf"
           },
           {
             nama: "Muhammad Hafiizh Abimanyu",
             nim: "M0403251103",
-            tanggal_lahir: "18 Mei 2004",
-            asal_kota: "Bandung",
+            tanggal_lahir: "01 Juli 2007",
+            asal_kota: "Bekasi",
             instagram: "https://instagram.com/username",
             linkedin: "https://linkedin.com/in/username",
             foto: "assets/images/members/Muhammad Hafiizh Abimanyu.jpg",
@@ -165,8 +165,8 @@
             foto: "assets/images/gallery/photo10.jpeg"
           },
           {
-            judul: "Pekan Ilkomerz Day 5",
-            deskripsi: "Foto bersama proxy pada Pekan Ilkomerz hari kelima.",
+            judul: "Pekan Ilkomerz Day 5 & Inaugurasi Ilkomerz 62",
+            deskripsi: "Foto bersama proxy pada Pekan Ilkomerz hari kelima dan Inaugurasi Day.",
             foto: "assets/images/gallery/photo11.jpeg"
           },
         ];
