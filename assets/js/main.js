@@ -24,7 +24,7 @@ function renderFilterButtons() {
   container.innerHTML = html;
 }
 
-// RENDER KARTU ANGGOTA DENGAN BIODATA LENGKAP & TOMBOL ZOOM FOTO
+// RENDER KARTU ANGGOTA (KOTAK FOTO PROFIL BISA DIKLIK LANGSUNG UNTUK ZOOM)
 function renderMembers(filterCity = 'all') {
   const container = document.getElementById('team-cards-container');
   if (!container) return;
@@ -40,23 +40,19 @@ function renderMembers(filterCity = 'all') {
     <div class="cyber-member-card relative group border border-slate-800/90 hover:border-slate-700 rounded-2xl p-5 shadow-xl transition-all duration-300 overflow-hidden font-mono text-xs flex flex-col justify-between">
       
       <div class="space-y-4 relative z-10">
-        <!-- FOTO PROFIL ANGGOTA (UKURAN REGULER: w-24 h-24 sm:w-28 sm:h-28) -->
         <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
-          <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-slate-900 border-2 border-slate-700/80 group-hover:border-sky-400 p-1 flex items-center justify-center overflow-hidden shrink-0 shadow-lg shadow-sky-500/10 transition duration-300 relative">
+          
+          <!-- KOTAK FOTO PROFIL (DIKLIK LANGSUNG UNTUK PERBESAR) -->
+          <div onclick="openImageModal('${member.foto}', '${member.nama}', 'Foto Profil — ${member.nama}')" 
+               title="Klik untuk memperbesar foto" 
+               class="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-slate-900 border-2 border-slate-700/80 group-hover:border-sky-400 p-1 flex items-center justify-center overflow-hidden shrink-0 shadow-lg shadow-sky-500/10 transition duration-300 cursor-pointer relative">
             <img src="${member.foto}" alt="${member.nama}" 
                  onerror="this.onerror=null; this.parentElement.innerHTML='<div class=&quot;w-full h-full bg-slate-900 flex items-center justify-center text-sky-400 font-mono text-xl font-bold border border-slate-800&quot;>${initials}</div>';" 
                  class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-300">
-            
-            <button onclick="openImageModal('${member.foto}', '${member.nama}', 'Foto Profil — ${member.nama}')" 
-                    aria-label="Perbesar foto" 
-                    class="absolute top-2 right-2 p-1.5 bg-slate-950/80 hover:bg-sky-500 text-slate-300 hover:text-slate-950 border border-slate-700/80 hover:border-sky-400 rounded-lg backdrop-blur-md transition shadow cursor-pointer z-20" 
-                    title="Perbesar Foto">
-              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
-            </button>
           </div>
           
-          <div class="space-y-2 text-center sm:text-left">
-            <h3 class="text-white text-base sm:text-lg font-bold font-sans tracking-tight leading-snug">${member.nama}</h3>
+          <div class="space-y-2 text-center sm:text-left flex-1 min-w-0">
+            <h3 class="text-white text-base sm:text-lg font-bold font-sans tracking-tight leading-snug break-words">${member.nama}</h3>
             <p class="text-xs font-mono text-sky-400/90 font-medium tracking-wide">NIM: ${member.nim || '-'}</p>
             <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-900/90 border border-slate-800 text-slate-300 text-[10px] font-bold">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -110,7 +106,7 @@ function renderMembers(filterCity = 'all') {
   if (window.lucide) lucide.createIcons();
 }
 
-// RENDER INITIATIVE LEAD / PJ CARD FROM DATA.JS
+// RENDER INITIATIVE LEAD (KOTAK FOTO PROFIL BISA DIKLIK LANGSUNG UNTUK ZOOM)
 function renderInitiativeLead() {
   const container = document.getElementById('initiative-lead-container');
   if (!container || typeof initiativeLeadData === 'undefined') return;
@@ -130,20 +126,15 @@ function renderInitiativeLead() {
             <span class="text-xs text-slate-400">${initiativeLeadData.node || 'Pekan Ilkomerz 62'}</span>
         </div>
 
-        <!-- FOTO PROFIL LEAD (UKURAN SEDIKIT LEBIH KECIL DARI SEBELUMNYA: w-28 h-28 sm:w-32 sm:h-32) -->
         <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
-            <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-slate-900 border-2 border-slate-700/80 group-hover:border-sky-400 p-1 flex items-center justify-center overflow-hidden shrink-0 shadow-lg shadow-sky-500/10 transition duration-300 relative">
+            
+            <!-- KOTAK FOTO PROFIL LEAD (DIKLIK LANGSUNG UNTUK PERBESAR) -->
+            <div onclick="openImageModal('${initiativeLeadData.foto}', '${initiativeLeadData.nama}', 'Foto Profil — ${initiativeLeadData.nama}')" 
+                 title="Klik untuk memperbesar foto" 
+                 class="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-slate-900 border-2 border-slate-700/80 group-hover:border-sky-400 p-1 flex items-center justify-center overflow-hidden shrink-0 shadow-lg shadow-sky-500/10 transition duration-300 cursor-pointer relative">
                 <img src="${initiativeLeadData.foto}" alt="${initiativeLeadData.nama}" 
                     onerror="this.onerror=null; this.parentElement.innerHTML='<div class=&quot;w-full h-full bg-slate-900 flex items-center justify-center text-sky-400 font-mono text-xl font-bold border border-slate-800&quot;>${initials}</div>';" 
                     class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-300">
-                
-                <!-- TOMBOL ZOOM (POSISI KANAN ATAS) -->
-                <button onclick="openImageModal('${initiativeLeadData.foto}', '${initiativeLeadData.nama}', 'Foto Profil — ${initiativeLeadData.nama}')" 
-                        aria-label="Perbesar foto" 
-                        class="absolute top-2 right-2 p-1.5 bg-slate-950/80 hover:bg-sky-500 text-slate-300 hover:text-slate-950 border border-slate-700/80 hover:border-sky-400 rounded-lg backdrop-blur-md transition shadow cursor-pointer z-20" 
-                        title="Perbesar Foto">
-                    <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
-                </button>
             </div>
 
             <div class="space-y-2 text-center sm:text-left flex-1 min-w-0">
@@ -283,7 +274,7 @@ function openCvModal(pdfUrl, nama) {
       iframe.src = pdfUrl;
     }
 
-    if (title) title.innerHTML = `<i data-lucide="file-text" class="w-4 h-4"></i> CV ATS Preview — ${nama}`;
+    if (title) title.innerHTML = `<i data-lucide="file-text" class="w-4 h-4"></i> ATS CV Preview — ${nama}`;
     modal.classList.remove('hidden');
     if (window.lucide) lucide.createIcons();
   }
