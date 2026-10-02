@@ -88,13 +88,75 @@
         .cyber-member-card {
             background-color: rgba(11, 15, 25, 0.92);
             backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+
+        /* Neon Green glow — odd cards (1st, 3rd, 5th...) */
+        #team-cards-container > div:nth-child(odd).cyber-member-card {
+            box-shadow: 0 0 20px 0px rgba(130, 255, 170, 0.3), 0 0 8px 0px rgba(130, 255, 170, 0.2);
+            border-color: rgba(130, 255, 170, 0.35) !important;
+        }
+        #team-cards-container > div:nth-child(odd).cyber-member-card:hover {
+            box-shadow: 0 0 40px 2px rgba(130, 255, 170, 0.5), 0 0 15px 0px rgba(130, 255, 170, 0.35);
+            border-color: rgba(130, 255, 170, 0.6) !important;
+        }
+
+        /* Neon Pink glow — even cards (2nd, 4th, 6th...) */
+        #team-cards-container > div:nth-child(even).cyber-member-card {
+            box-shadow: 0 0 20px 0px rgba(255, 150, 230, 0.3), 0 0 8px 0px rgba(255, 150, 230, 0.2);
+            border-color: rgba(255, 150, 230, 0.35) !important;
+        }
+        #team-cards-container > div:nth-child(even).cyber-member-card:hover {
+            box-shadow: 0 0 40px 2px rgba(255, 150, 230, 0.5), 0 0 15px 0px rgba(255, 150, 230, 0.35);
+            border-color: rgba(255, 150, 230, 0.6) !important;
         }
 
         .text-gradient-neon {
-            background: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #a855f7 100%);
+            background: linear-gradient(90deg, #10b981, #06b6d4, #a855f7, #f43f5e, #f59e0b, #10b981);
+            background-size: 300% 100%;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: shimmer-text 4s ease infinite;
+            filter: drop-shadow(0 0 12px rgba(6, 182, 212, 0.5)) drop-shadow(0 0 30px rgba(168, 85, 247, 0.3));
+        }
+
+        @keyframes shimmer-text {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* PJ Proxy Python card glow */
+        #initiative-lead-container .cyber-card {
+            box-shadow: 0 0 25px 0px rgba(130, 255, 170, 0.25), 0 0 25px 0px rgba(255, 150, 230, 0.25), 0 0 15px 0px rgba(6, 182, 212, 0.2);
+            border-color: rgba(168, 85, 247, 0.3) !important;
+            animation: card-glow 4s ease infinite;
+            transition: all 0.3s ease;
+        }
+
+        #initiative-lead-container .cyber-card:hover {
+            box-shadow: 0 0 50px 8px rgba(130, 255, 170, 0.65), 
+                        0 0 35px 4px rgba(255, 150, 230, 0.6), 
+                        0 0 75px 15px rgba(6, 182, 212, 0.5) !important;
+            border-color: rgba(130, 255, 170, 0.8) !important;
+            transform: translateY(-4px) scale(1.015);
+            filter: brightness(1.1);
+        }
+
+        @keyframes card-glow {
+            0%, 100% {
+                box-shadow: 0 0 25px 0px rgba(130, 255, 170, 0.3), 0 0 15px 0px rgba(255, 150, 230, 0.15), 0 0 10px 0px rgba(6, 182, 212, 0.1);
+                border-color: rgba(130, 255, 170, 0.35) !important;
+            }
+            33% {
+                box-shadow: 0 0 25px 0px rgba(255, 150, 230, 0.3), 0 0 15px 0px rgba(6, 182, 212, 0.15), 0 0 10px 0px rgba(168, 85, 247, 0.1);
+                border-color: rgba(255, 150, 230, 0.35) !important;
+            }
+            66% {
+                box-shadow: 0 0 25px 0px rgba(6, 182, 212, 0.3), 0 0 15px 0px rgba(168, 85, 247, 0.15), 0 0 10px 0px rgba(130, 255, 170, 0.1);
+                border-color: rgba(6, 182, 212, 0.35) !important;
+            }
         }
     </style>
 </head>
@@ -196,10 +258,10 @@
                         <span>Meet Proxy Collective</span>
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
-                    <button onclick="openAboutModal()" class="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold flex items-center gap-2 transition">
+                    <a href="#gallery-section" class="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold flex items-center gap-2 transition">
                         <i data-lucide="book-open" class="w-4 h-4 text-sky-400"></i>
                         <span>View Documentation</span>
-                    </button>
+                    </a>
                 </div>
 
                 <!-- METRICS GRID -->
@@ -222,7 +284,7 @@
 
             <!-- RIGHT COLUMN: FEATURED INITIATIVE LEAD CARD -->
             <div class="lg:col-span-5" id="initiative-lead-container">
-                <!-- Diisi otomatis oleh main.js dari data.js -->
+                
             </div>
         </div>
     </section>
@@ -235,7 +297,7 @@
                 <div class="space-y-2">
                     <div class="text-xs font-mono text-sky-400 font-semibold flex items-center gap-2">
                         <i data-lucide="users" class="w-4 h-4"></i>
-                        <span>PROXY PYTHON CORE ROSTER</span>
+                        <span>PROXY PYTHON CORE COLLECTIVE</span>
                     </div>
                     <h2 class="text-2xl sm:text-4xl font-extrabold text-white font-sans">
                         Meet the Proxy Python Collective
@@ -266,7 +328,7 @@
                 <div class="space-y-1">
                     <div class="text-xs font-mono text-amber-400 font-semibold flex items-center gap-2">
                         <i data-lucide="camera" class="w-4 h-4"></i>
-                        <span>FIELD NOTES & RESEARCH SHOWCASE</span>
+                        <span>OUR JOURNEY & HIGHLIGHTS</span>
                     </div>
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-white font-sans">
                         Activity Documentation
@@ -392,11 +454,10 @@
             <div class="p-6 overflow-y-auto space-y-6 font-sans">
                 <div class="space-y-3">
                     <h3 class="text-xl font-bold text-white font-mono flex items-center gap-2">
-                        <span class="text-sky-400">#</span> Global Collective Manifesto
+                        <span class="text-sky-400">#</span> Proxy Python Manifesto
                     </h3>
                     <p class="text-sm text-slate-300 leading-relaxed">
-                        Kami merupakan tim mahasiswa Ilmu komputer yang berdiri sejak dimulainya Pekan Ilkomerz 
-                        62. Tujuan kami adalah untuk melaksanakan PI 62 sebaik mungkin.
+                        Berawal dari Pekan Ilkomerz 62, Proxy Python hadir sebagai kolektif mahasiswa Ilmu Komputer. Kami berkomitmen untuk saling mendukung, bertumbuh bersama, dan mengeksekusi setiap proses Pekan Ilkomerz 62 dengan performa terbaik.
                     </p>
                 </div>
             </div>

@@ -129,7 +129,7 @@
         const galleryData = [
           {
             judul: "Meet Your Proxy",
-            deskripsi: "Pertemuan pertama anggota proxy bersama PJK.",
+            deskripsi: "Pertemuan pertama anggota Proxy Python bersama PJ Proxy.",
             foto: "assets/images/gallery/photo1.jpeg"
           },
           {

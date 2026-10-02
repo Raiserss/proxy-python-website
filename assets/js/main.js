@@ -142,7 +142,7 @@ function renderInitiativeLead() {
                     ${initiativeLeadData.nama}
                 </h3>
                 <p class="text-xs font-mono text-sky-400/90 font-medium tracking-wide">
-                    NIM / NIP: ${initiativeLeadData.nim}
+                    NIM: ${initiativeLeadData.nim}
                 </p>
                 <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-950 border border-slate-800 text-slate-300 text-[10px] font-bold">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -274,7 +274,7 @@ function openCvModal(pdfUrl, nama) {
       iframe.src = pdfUrl;
     }
 
-    if (title) title.innerHTML = `<i data-lucide="file-text" class="w-4 h-4"></i> ATS CV Preview — ${nama}`;
+    if (title) title.innerHTML = `<i data-lucide="file-text" class="w-4 h-4"></i> CV ATS Preview — ${nama}`;
     modal.classList.remove('hidden');
     if (window.lucide) lucide.createIcons();
   }
