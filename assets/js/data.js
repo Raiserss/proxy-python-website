@@ -1,4 +1,17 @@
-// DATA SET ANGGOTA (10 ANGGOTA KELOMPOK)
+        const initiativeLeadData = {
+            tag: "PJ Proxy Python",
+            node: "Pekan Ilkomerz 62",
+            nama: "Melandri Rasya Arindhi",
+            nim: "M0403241084",
+            lokasi: "Jakarta",
+            foto: "assets/images/members/Melandri Rasya Arindhi.png",
+            tanggal_lahir: "20 Juni 2006",
+            asal_kota: "Jakarta",
+            instagram: "https://instagram.com/rhyzent?stkn=bzNwbXRlNnM1MGU5",
+            linkedin: "https://linkedin.com/in/melandri-rasya-arindhi-586991323?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+        };
+
+// DATA SET ANGGOTA (11 ANGGOTA KELOMPOK)
         const membersData = [
           {
             nama: "Muhammad Faris Pasha Piguna",
@@ -83,10 +96,10 @@
           {
             nama: "Andri Fariz",
             nim: "M0403251108",
-            tanggal_lahir: "02 Desember 2003",
+            tanggal_lahir: "04 Juni 2007",
             asal_kota: "Jakarta",
-            instagram: "https://instagram.com/username",
-            linkedin: "https://linkedin.com/in/username",
+            instagram: "https://instagram.com/kacperecki44",
+            linkedin: "https://linkedin.com/in/andri-fariz-2760462b7",
             foto: "assets/images/members/Andri Fariz.jpg",
             cv: "assets/docs/Andri Fariz-cv.pdf"
           },

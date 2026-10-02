@@ -24,7 +24,7 @@ function renderFilterButtons() {
   container.innerHTML = html;
 }
 
-// RENDER KARTU ANGGOTA DENGAN BIODATA LENGKAP (NIM + PYTHON CODE BOX)
+// RENDER KARTU ANGGOTA DENGAN BIODATA LENGKAP & TOMBOL ZOOM FOTO
 function renderMembers(filterCity = 'all') {
   const container = document.getElementById('team-cards-container');
   if (!container) return;
@@ -40,16 +40,23 @@ function renderMembers(filterCity = 'all') {
     <div class="cyber-member-card relative group border border-slate-800/90 hover:border-slate-700 rounded-2xl p-5 shadow-xl transition-all duration-300 overflow-hidden font-mono text-xs flex flex-col justify-between">
       
       <div class="space-y-4 relative z-10">
-        <!-- FOTO PROFIL DENGAN OUTLINE BORDER & FALLBACK -->
+        <!-- FOTO PROFIL ANGGOTA (UKURAN REGULER: w-24 h-24 sm:w-28 sm:h-28) -->
         <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
-          <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-slate-900 border-2 border-slate-700/80 group-hover:border-sky-400 p-1 flex items-center justify-center overflow-hidden shrink-0 shadow-lg shadow-sky-500/10 group-hover:scale-105 transition duration-300">
+          <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-slate-900 border-2 border-slate-700/80 group-hover:border-sky-400 p-1 flex items-center justify-center overflow-hidden shrink-0 shadow-lg shadow-sky-500/10 transition duration-300 relative">
             <img src="${member.foto}" alt="${member.nama}" 
                  onerror="this.onerror=null; this.parentElement.innerHTML='<div class=&quot;w-full h-full bg-slate-900 flex items-center justify-center text-sky-400 font-mono text-xl font-bold border border-slate-800&quot;>${initials}</div>';" 
-                 class="w-full h-full object-cover rounded-xl">
+                 class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-300">
+            
+            <button onclick="openImageModal('${member.foto}', '${member.nama}', 'Foto Profil — ${member.nama}')" 
+                    aria-label="Perbesar foto" 
+                    class="absolute top-2 right-2 p-1.5 bg-slate-950/80 hover:bg-sky-500 text-slate-300 hover:text-slate-950 border border-slate-700/80 hover:border-sky-400 rounded-lg backdrop-blur-md transition shadow cursor-pointer z-20" 
+                    title="Perbesar Foto">
+              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+            </button>
           </div>
+          
           <div class="space-y-2 text-center sm:text-left">
             <h3 class="text-white text-base sm:text-lg font-bold font-sans tracking-tight leading-snug">${member.nama}</h3>
-            <!-- NIM ANGGOTA -->
             <p class="text-xs font-mono text-sky-400/90 font-medium tracking-wide">NIM: ${member.nim || '-'}</p>
             <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-900/90 border border-slate-800 text-slate-300 text-[10px] font-bold">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -70,8 +77,6 @@ function renderMembers(filterCity = 'all') {
 
       <!-- MEDIA SOSIAL & AKSES CV ATS -->
       <div class="flex flex-wrap items-center justify-between gap-3 pt-3 mt-4 border-t border-slate-800/80 relative z-10">
-        
-        <!-- LINK SOSMED -->
         <div class="flex items-center gap-3 text-slate-400">
           <a href="${member.instagram}" target="_blank" rel="noopener noreferrer" class="hover:text-pink-400 flex items-center gap-1 transition-colors" title="Instagram">
             <svg class="w-4 h-4 fill-current text-pink-500" viewBox="0 0 24 24">
@@ -88,7 +93,6 @@ function renderMembers(filterCity = 'all') {
           </a>
         </div>
         
-        <!-- TOMBOL CV -->
         <div class="flex items-center gap-1.5 shrink-0">
           <button onclick="openCvModal('${member.cv}', '${member.nama}')" class="px-2.5 py-1.5 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-lg text-[11px] font-bold flex items-center gap-1 transition whitespace-nowrap">
             <i data-lucide="eye" class="w-3.5 h-3.5 text-sky-400"></i> Lihat CV
@@ -97,12 +101,92 @@ function renderMembers(filterCity = 'all') {
             <i data-lucide="download" class="w-3.5 h-3.5"></i> Unduh
           </a>
         </div>
-
       </div>
 
     </div>
   `;
   }).join('');
+
+  if (window.lucide) lucide.createIcons();
+}
+
+// RENDER INITIATIVE LEAD / PJ CARD FROM DATA.JS
+function renderInitiativeLead() {
+  const container = document.getElementById('initiative-lead-container');
+  if (!container || typeof initiativeLeadData === 'undefined') return;
+
+  const initials = initiativeLeadData.nama
+    ? initiativeLeadData.nama.split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase()
+    : 'LD';
+
+  container.innerHTML = `
+    <div class="cyber-card group rounded-2xl p-6 relative overflow-hidden space-y-5 font-mono text-xs">
+        
+        <!-- HEADER TAG -->
+        <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[10px] font-bold uppercase tracking-wider">
+                ● ${initiativeLeadData.tag || 'PJ Proxy Python'}
+            </span>
+            <span class="text-xs text-slate-400">${initiativeLeadData.node || 'Pekan Ilkomerz 62'}</span>
+        </div>
+
+        <!-- FOTO PROFIL LEAD (UKURAN SEDIKIT LEBIH KECIL DARI SEBELUMNYA: w-28 h-28 sm:w-32 sm:h-32) -->
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+            <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-slate-900 border-2 border-slate-700/80 group-hover:border-sky-400 p-1 flex items-center justify-center overflow-hidden shrink-0 shadow-lg shadow-sky-500/10 transition duration-300 relative">
+                <img src="${initiativeLeadData.foto}" alt="${initiativeLeadData.nama}" 
+                    onerror="this.onerror=null; this.parentElement.innerHTML='<div class=&quot;w-full h-full bg-slate-900 flex items-center justify-center text-sky-400 font-mono text-xl font-bold border border-slate-800&quot;>${initials}</div>';" 
+                    class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-300">
+                
+                <!-- TOMBOL ZOOM (POSISI KANAN ATAS) -->
+                <button onclick="openImageModal('${initiativeLeadData.foto}', '${initiativeLeadData.nama}', 'Foto Profil — ${initiativeLeadData.nama}')" 
+                        aria-label="Perbesar foto" 
+                        class="absolute top-2 right-2 p-1.5 bg-slate-950/80 hover:bg-sky-500 text-slate-300 hover:text-slate-950 border border-slate-700/80 hover:border-sky-400 rounded-lg backdrop-blur-md transition shadow cursor-pointer z-20" 
+                        title="Perbesar Foto">
+                    <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                </button>
+            </div>
+
+            <div class="space-y-2 text-center sm:text-left flex-1 min-w-0">
+                <h3 class="text-white text-base sm:text-lg font-bold font-sans tracking-tight leading-snug break-words">
+                    ${initiativeLeadData.nama}
+                </h3>
+                <p class="text-xs font-mono text-sky-400/90 font-medium tracking-wide">
+                    NIM / NIP: ${initiativeLeadData.nim}
+                </p>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-950 border border-slate-800 text-slate-300 text-[10px] font-bold">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    📍 ${initiativeLeadData.lokasi}
+                </span>
+            </div>
+        </div>
+
+        <!-- KODE BIODATA PYTHON -->
+        <div class="bg-slate-950/90 p-3.5 rounded-xl border border-slate-800/90 space-y-1 text-emerald-400 font-mono relative overflow-hidden shadow-inner">
+            <div class="absolute top-0 right-0 px-2 py-0.5 bg-slate-900 text-[9px] text-slate-500 border-b border-l border-slate-800 rounded-bl">py</div>
+            <p class="truncate"><span class="text-sky-400">nama</span> = <span class="text-slate-200">"${initiativeLeadData.nama}"</span></p>
+            <p class="truncate"><span class="text-sky-400">nim</span> = <span class="text-slate-200">"${initiativeLeadData.nim}"</span></p>
+            <p class="truncate"><span class="text-sky-400">tanggal_lahir</span> = <span class="text-slate-200">"${initiativeLeadData.tanggal_lahir}"</span></p>
+            <p class="truncate"><span class="text-sky-400">asal_kota</span> = <span class="text-slate-200">"${initiativeLeadData.asal_kota}"</span></p>
+        </div>
+
+        <!-- FOOTER SOSMED -->
+        <div class="flex items-center justify-between gap-3 pt-3 border-t border-slate-800/80">
+            <div class="flex items-center gap-4 text-slate-400">
+                ${initiativeLeadData.instagram ? `
+                <a href="${initiativeLeadData.instagram}" target="_blank" rel="noopener noreferrer" class="hover:text-pink-400 flex items-center gap-1.5 transition-colors" title="Instagram">
+                    <svg class="w-4 h-4 fill-current text-pink-500" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    <span>Instagram</span>
+                </a>` : ''}
+                ${initiativeLeadData.linkedin ? `
+                <a href="${initiativeLeadData.linkedin}" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 flex items-center gap-1.5 transition-colors" title="LinkedIn">
+                    <svg class="w-4 h-4 fill-current text-sky-400" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    <span>LinkedIn</span>
+                </a>` : ''}
+            </div>
+        </div>
+
+    </div>
+  `;
 
   if (window.lucide) lucide.createIcons();
 }
@@ -199,7 +283,7 @@ function openCvModal(pdfUrl, nama) {
       iframe.src = pdfUrl;
     }
 
-    if (title) title.innerHTML = `<i data-lucide="file-text" class="w-4 h-4"></i> ATS CV Preview — ${nama}`;
+    if (title) title.innerHTML = `<i data-lucide="file-text" class="w-4 h-4"></i> CV ATS Preview — ${nama}`;
     modal.classList.remove('hidden');
     if (window.lucide) lucide.createIcons();
   }
@@ -214,7 +298,7 @@ function closeCvModal() {
   }
 }
 
-// MODAL LIGHTBOX FOTO DOKUMENTASI
+// MODAL LIGHTBOX FOTO DOKUMENTASI / FOTO PROFIL
 function openImageModal(fotoUrl, judul, deskripsi) {
   const modal = document.getElementById('image-modal');
   const img = document.getElementById('image-modal-src');
@@ -247,9 +331,6 @@ function closeImageModal() {
 function openAboutModal() { document.getElementById('about-modal')?.classList.remove('hidden'); }
 function closeAboutModal() { document.getElementById('about-modal')?.classList.add('hidden'); }
 
-function openContactModal() { document.getElementById('contact-modal')?.classList.remove('hidden'); }
-function closeContactModal() { document.getElementById('contact-modal')?.classList.add('hidden'); }
-
 function toggleMobileMenu() {
   const menu = document.getElementById('mobile-menu');
   if (menu) menu.classList.toggle('hidden');
@@ -263,6 +344,7 @@ function handleContactSubmit(e) {
 
 // INITIALIZE APP ON DOM LOAD
 document.addEventListener('DOMContentLoaded', () => {
+  renderInitiativeLead();
   renderFilterButtons();
   renderMembers('all');
   updateGalleryShowcase();
